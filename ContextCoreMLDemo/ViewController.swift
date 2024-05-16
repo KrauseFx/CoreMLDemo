@@ -16,11 +16,14 @@ class ViewController: UIViewController {
                Double(batteryLevel),
                Double(batteryCharging ? 1.0 : 0.0)
             ])
-            if let result = try modelDownloadManager.latestModel()?.prediction(input: modelInput) {
+            if let currentModel = modelDownloadManager.latestModel() {
+                let result = try currentModel.prediction(input: modelInput)
                 let classProbabilities = result.featureValue(for: "classProbability")?.dictionaryValue
                 let upsellProbability = classProbabilities?["Purchased"]?.doubleValue ?? -1
                 
-                showAlertDialog(message:("Chances of Upsell: \(upsellProbability)"))
+                let modelMetadata = currentModel.model.modelDescription.metadata[.description]
+                
+                showAlertDialog(message:("Chances of Upsell: \(upsellProbability), executed through model \(String(describing: modelMetadata))"))
             } else {
                 showAlertDialog(message:("Could not run CoreML model"))
             }

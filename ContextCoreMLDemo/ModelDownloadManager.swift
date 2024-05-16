@@ -24,8 +24,7 @@ class ModelDownloadManager {
             let otaModel = try? MyFirstCustomModel(contentsOf: latestFileURL) {
             return otaModel
         } else if let bundledModel = try? MyFirstCustomModel(configuration: MLModelConfiguration()) {
-            // Fallback to the bundled model if no downloaded model exists
-            return bundledModel
+            return bundledModel // Fallback to the bundled model if no downloaded model exists
         }
         return nil
     }
@@ -53,8 +52,7 @@ class ModelDownloadManager {
             // File exists, you could add a version check here if versions are part of the file name or metadata
             print("Model already exists locally. No need to download.")
         } else {
-            // File does not exist, download it
-            let downloadedURL = try await downloadCoreMLFile(from: url)
+            let downloadedURL = try await downloadCoreMLFile(from: url) // File does not exist, download it
             _ = try compileCoreMLFile(at: downloadedURL)
             print("Model downloaded and compiled successfully.")
         }
@@ -62,15 +60,9 @@ class ModelDownloadManager {
     
     // It's important to immediately move the downloaded CoreML file into a permanent location
     private func downloadCoreMLFile(from url: URL) async throws -> URL {
-        // Download file using URLSession's native async method
         let (tempLocalURL, _) = try await URLSession.shared.download(for: URLRequest(url: url))
-        
-        // Destination URL in the models folder
         let destinationURL = modelsFolder.appendingPathComponent(tempLocalURL.lastPathComponent)
-        
-        // Move the downloaded file to the models folder
-        try fileManager.moveItem(at: tempLocalURL, to: destinationURL)
-        
+        try fileManager.moveItem(at: tempLocalURL, to: destinationURL)        
         return destinationURL
     }
     
