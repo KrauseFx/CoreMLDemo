@@ -14,6 +14,7 @@
 		F207323F2BF5ECD5002F3A39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F207323E2BF5ECD5002F3A39 /* Assets.xcassets */; };
 		F20732422BF5ECD5002F3A39 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F20732412BF5ECD5002F3A39 /* Base */; };
 		F207324C2BF5EFFF002F3A39 /* MyFirstCustomModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F207324B2BF5EFFF002F3A39 /* MyFirstCustomModel.mlmodel */; };
+		F207324E2BF61B73002F3A39 /* ModelDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F207324D2BF61B73002F3A39 /* ModelDownloadManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		F20732412BF5ECD5002F3A39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F20732432BF5ECD5002F3A39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F207324B2BF5EFFF002F3A39 /* MyFirstCustomModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MyFirstCustomModel.mlmodel; sourceTree = "<group>"; };
+		F207324D2BF61B73002F3A39 /* ModelDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDownloadManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				F20732402BF5ECD5002F3A39 /* LaunchScreen.storyboard */,
 				F20732432BF5ECD5002F3A39 /* Info.plist */,
 				F207324B2BF5EFFF002F3A39 /* MyFirstCustomModel.mlmodel */,
+				F207324D2BF61B73002F3A39 /* ModelDownloadManager.swift */,
 			);
 			path = ContextCoreMLDemo;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F207324C2BF5EFFF002F3A39 /* MyFirstCustomModel.mlmodel in Sources */,
+				F207324E2BF61B73002F3A39 /* ModelDownloadManager.swift in Sources */,
 				F207323A2BF5ECD3002F3A39 /* ViewController.swift in Sources */,
 				F20732362BF5ECD3002F3A39 /* AppDelegate.swift in Sources */,
 				F20732382BF5ECD3002F3A39 /* SceneDelegate.swift in Sources */,
