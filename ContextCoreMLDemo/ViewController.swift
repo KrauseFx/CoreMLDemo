@@ -16,12 +16,11 @@ class ViewController: UIViewController {
                Double(batteryLevel),
                Double(batteryCharging ? 1.0 : 0.0)
             ])
-            if let currentModel = modelDownloadManager.latestModel() {
+            if let currentModel = modelDownloadManager.latestModel(),
+               let modelMetadata = currentModel.model.modelDescription.metadata[.description] {
                 let result = try currentModel.prediction(input: modelInput)
                 let classProbabilities = result.featureValue(for: "classProbability")?.dictionaryValue
                 let upsellProbability = classProbabilities?["Purchased"]?.doubleValue ?? -1
-                
-                let modelMetadata = currentModel.model.modelDescription.metadata[.description]
                 
                 showAlertDialog(message:("Chances of Upsell: \(upsellProbability), executed through model \(String(describing: modelMetadata))"))
             } else {

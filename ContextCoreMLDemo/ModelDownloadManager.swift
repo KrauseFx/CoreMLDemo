@@ -53,8 +53,9 @@ class ModelDownloadManager {
             print("Model already exists locally. No need to download.")
         } else {
             let downloadedURL = try await downloadCoreMLFile(from: url) // File does not exist, download it
-            _ = try compileCoreMLFile(at: downloadedURL)
-            print("Model downloaded and compiled successfully.")
+            let compiledURL = try compileCoreMLFile(at: downloadedURL)
+            try deleteAllOutdatedModels(keeping: compiledURL.lastPathComponent)
+            print("Model downloaded, compiled, and old models cleaned up successfully.")
         }
     }
     
@@ -62,7 +63,7 @@ class ModelDownloadManager {
     private func downloadCoreMLFile(from url: URL) async throws -> URL {
         let (tempLocalURL, _) = try await URLSession.shared.download(for: URLRequest(url: url))
         let destinationURL = modelsFolder.appendingPathComponent(tempLocalURL.lastPathComponent)
-        try fileManager.moveItem(at: tempLocalURL, to: destinationURL)        
+        try fileManager.moveItem(at: tempLocalURL, to: destinationURL)
         return destinationURL
     }
     
