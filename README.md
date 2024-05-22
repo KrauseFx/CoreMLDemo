@@ -1,0 +1,1 @@
+This is the demo app for distributing CoreML Machine Learning files over-the-air. For more context, check out [this post](https://contextsdk.com/blog/safely-distribute-new-machine-learning-models-to-millions-of-iphones-over-the-air)
